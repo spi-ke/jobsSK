@@ -1,0 +1,9 @@
+parameters:
+    job.position: AppBundle:JobPosition
+    default_repository.class: Doctrine\ORM\EntityRepository
+
+services:
+     job.repository:
+          class: AppBundle\Repository\JobPositionRepository
+          factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
+          arguments: ["%job.position%"]
